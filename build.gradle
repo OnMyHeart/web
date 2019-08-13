@@ -1,0 +1,55 @@
+buildscript {
+
+    ext {
+        springBootVersion = '2.1.7.RELEASE'
+        springCloudVersion = 'Greenwich.SR2'
+    }
+
+    repositories {
+        maven{ url'https://maven.aliyun.com/repository/public'}
+    }
+
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+    
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: "eclipse"
+    apply plugin: "io.spring.dependency-management"
+
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+
+        maven {
+            credentials {
+                username '7q2MFU'
+                password 'jow5BzG0CG'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/79451-release-z31u8t/'
+        }
+        maven {
+            credentials {
+                username '7q2MFU'
+                password 'jow5BzG0CG'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/79451-snapshot-UJlt8r/'
+        }
+    }
+
+    dependencies {
+        implementation 'org.apache.commons:commons-lang3:3.9'
+        implementation 'com.alibaba:fastjson:1.2.58'
+        implementation "org.springframework.boot:spring-boot-starter-jersey"
+    }
+
+    group = "com.dream"
+
+}

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: bc-web
+  http:
+    encoding: {charset: utf-8, force: true, enabled: true}
+  cloud:
+    config:
+      #配置中心URL
+      uri: http://config.7smemery.com
+      #配置文件名称，必填项，默认application，不可修改
+      name: application
+      #当前项目需要引用的公共配置，最后一个${spring.application.name}不可缺少
+      profile: eureka-service,actuator,${spring.application.name}
+      #当前配置环境，默认dev，不可修改，环境切换通过不同环境的服务启动脚本实现
+      label: dev
+info:
+  component: bc-web

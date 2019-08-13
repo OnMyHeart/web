@@ -1,0 +1,57 @@
+server:
+  port: 8300
+
+spring:
+  redis:
+    host: redis.dreamtale.com
+    port: 6379
+    database: 0
+    timeout: 10000
+    lettuce:
+      pool:
+#       连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 8000
+#       连接池中的最小空闲连接 默认 0
+        min-idle: 0
+#       连接池中的最大空闲连接 默认 8
+        max-idle: 10
+#       连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1
+#     关闭超时时间
+      shutdown-timeout: 100
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: dev001
+    password: Dev.qwe123
+    url: jdbc:mysql://mysql.dreamtale.com:3306/ck_online?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=GMT%2B8
+#   配置数据库连接池类型
+#   这个是号称世界上最快的连接池 springboot 2.0 自带
+    hikari:
+      initialization-fail-timeout: 1
+      auto-commit: true
+#     数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+#     此属性控制允许连接在池中空闲的最长时间
+#     此设置仅在minimumIdle定义为小于maximumPoolSize时适用。
+#     一旦池达到minimumIdle连接，空闲连接将不会退出。
+#     连接是否空闲退出的最大变化为+30秒，平均变化为+15秒。
+#     在此超时之前，连接永远不会被空闲。 值为0表示永远不会从池中删除空闲连接。
+#     允许的最小值为10000毫秒（10秒）。 默认值：600000（10分钟）
+      idle-timeout: 60000
+      minimum-idle: 100
+      maximum-pool-size: 300
+      pool-name: webHikariCP
+#     此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+    type: com.zaxxer.hikari.HikariDataSource
+
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://10.168.1.100:8761/eureka
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    status-page-url-path: /doc.html
