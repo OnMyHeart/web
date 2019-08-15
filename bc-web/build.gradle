@@ -43,6 +43,7 @@ dependencies {
     implementation "com.github.pagehelper:pagehelper-spring-boot-starter:1.2.3"
     // redis lettuce
     implementation "org.apache.commons:commons-pool2:2.7.0"
+//    implementation 'org.springframework.cloud:spring-cloud-alibaba-nacos-config:0.2.2.RELEASE'
     //测试
     testImplementation "org.springframework.boot:spring-boot-starter-test"
 }
