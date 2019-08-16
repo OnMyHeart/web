@@ -22,6 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("登陆拦截器 preHandle()");
+        request.getSession();
         return super.preHandle(request, response, handler);
     }
 

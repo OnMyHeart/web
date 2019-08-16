@@ -19,6 +19,6 @@ public class RequestListener implements ServletRequestListener {
 
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
-        logger.info("请求监听器 初始化");
+        logger.info("请求监听器 初始化 : 会话失效时间 {} 秒",sre.getServletContext().getSessionTimeout());
     }
 }

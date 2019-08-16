@@ -19,8 +19,6 @@ public class BaseResource {
 
     @GetMapping("/a")
     public String a(HttpServletRequest request, HttpServletResponse response){
-        HttpSession session = request.getSession();
-        session.setMaxInactiveInterval(60);
         logger.info("开始执行 b");
         return "index";
     }

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
@@ -14,11 +15,12 @@ public class SessionListener implements HttpSessionListener {
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
-        logger.info("创建 session");
+        HttpSession session = se.getSession();
+        logger.info("创建 session id = {}",session.getId());
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        logger.info("销毁 session");
+        logger.info("销毁 session id = {}", se.getSession().getId());
     }
 }
