@@ -14,6 +14,9 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
     }
     
+    configurations {
+        compile.exclude module: "spring-boot-starter-tomcat"
+    }
 }
 
 subprojects {
